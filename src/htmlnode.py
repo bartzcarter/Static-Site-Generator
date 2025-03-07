@@ -6,7 +6,7 @@ class HTMLNode():
         self.props = props
 
     def to_html(self):
-        raise NotImplementedError
+        raise NotImplementedError("Must impliment in child class")
 
     def props_to_html(self):
         str = f""
