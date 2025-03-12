@@ -6,6 +6,8 @@ def split_nodes_link(nodes):
     new_nodes = []
 
     for node in nodes:
+        # if not node.text_type.value == "text":
+        #     new_nodes.append(node)
         links = extract_markdown_links(node.text)
         text = re.split(r"(\[.*?\]\(.*?\))",node.text)
         for t in text:
@@ -13,6 +15,6 @@ def split_nodes_link(nodes):
             if set(links_in_t).issubset(set(links)) and not links_in_t == []:
                 new_nodes.append(TextNode(links_in_t[0][0], TextType.LINK, links_in_t[0][1]))
             elif not t == "":
-                new_nodes.append(TextNode(t, TextType.TEXT))
+                new_nodes.append(TextNode(t, node.text_type, node.url))
 
     return new_nodes
