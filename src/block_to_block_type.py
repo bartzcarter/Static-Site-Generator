@@ -12,7 +12,6 @@ def block_to_block_type(block):
         return BlockType.CODE
 
     # check for quote
-
     if all(line.startswith(">") for line in lines):
         return BlockType.QUOTE
 
